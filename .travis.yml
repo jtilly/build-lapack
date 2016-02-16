@@ -22,15 +22,15 @@ script:
 - make lib
 - pwd
 - ls
-- mv lib*.a ../
+- tar -cvzf ../lapack.tar.gz lib*.a
+- cd ..
+
 
 deploy:
   provider: releases
   api_key:
     secure: HIl8PSx24Ed15Np1HlwdgyiIjErdG9c4KNerThcVJGI65WdS+1qDikkDtkjl5N7MCzbJI8vbrtLHd/BQYO8bz5txKylIj1GIgZ83pJPudqnRE/HZrZvhmsVfhUELX/fvlX+pTc+HeidXlly+jbbwXrJIw/z/cS3GcVRMVIvhN8mRm3Tvw80+K4ZnyDm1dp0EDnpabbkJJLlIx/9YN6UAQ3pJ/isJ6L/58cwX2ZHG+PPWOacGm4DtpjXQ+8SuIf2HlkxmURuzE03UWmL9Zob5mMh7AMOTwBJa+o4AA2h2HxUJ1FJNf11evMM7wSvrrV80azvelq2ofdJUmPmHbrGn8MXLL0qjS+4Iwp/jqdfYws1295dHKp6ZeOaUud32CFEe7J5eb3ul5PMFWUYsrdJO1eP57EMpXoYq2QhLVPeevoIW6NmZBIRztpGQR4KVCnIz9s3EKnFeYTOrZGyM4V7XAynKbsUvWIgD1DdfG2xSEEZzh/vdKClWAmDnMlhlqp/pcqOI74pgJ3vGOy36MuUlivCeoYW0hGi7teK6jImr+yfW+TvjZZiy11hE6P+Bw80wbvoP771ypFrBgnXkrme9Mki48WuFM8WM/GT5/TN0e4/MoNBqPD3+5rX66HKwScpJxxgAo0sTY8yjSZcByfCDxGQXkhq7zxRtal+lbqsTicI=
-  file: 
-    - liblapack.a 
-    - librefblas.a
+  file: lapack.tar.gz
   on:
     repo: jtilly/build-lapack
     all_branches: true
