@@ -19,6 +19,8 @@ install:
 
 script:
 - make lib
+- mv liblapack.a ../
+- mv librefblas.a ../
 
 deploy:
   provider: releases
