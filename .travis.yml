@@ -12,7 +12,7 @@ addons:
 # download and unpack
 before_install:
   - wget http://www.netlib.org/lapack/lapack-3.6.0.tgz
-  - tar xvf lapack-3.6.0.tgz
+  - tar xf lapack-3.6.0.tgz
   - cd lapack-3.6.0
 
 # create the make.inc from example, modify Makefile
