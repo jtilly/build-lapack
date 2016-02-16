@@ -9,8 +9,8 @@ cd lapack-3.6.0
 mv make.inc.example make.inc
 
 # uncomment the right line
-sed -i -e 's/lib:\ lapacklib\ tmglib /\#lib:\ lapacklib\ tmglib/g' Makefile 
-sed -i -e 's/#lib:\ blaslib\ variants/\lib:\ blaslib\ variants/g' Makefile 
+sed -i -e 's/lib:\ lapacklib\ tmglib/\#lib:\ lapacklib\ tmglib/g' Makefile 
+sed -i -e 's/#lib:\ blaslib\ variants/lib:\ blaslib\ variants/g' Makefile 
 
 # build
 make lib

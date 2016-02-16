@@ -15,7 +15,7 @@ before_install:
 install:
 - mv make.inc.example make.inc
 - sed -i -e 's/lib:\ lapacklib\ tmglib/\#lib:\ lapacklib\ tmglib/g' Makefile 
-- sed -i -e 's/#lib:\ blaslib\ variants/\lib:\ blaslib\ variants/g' Makefile 
+- sed -i -e 's/#lib:\ blaslib\ variants/lib:\ blaslib\ variants/g' Makefile 
 - cat Makefile
 
 script:
