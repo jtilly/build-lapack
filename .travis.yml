@@ -1,7 +1,5 @@
-# use c as catch-all language
 language: c
 
-# use containers
 sudo: false
 
 addons:
@@ -9,19 +7,25 @@ addons:
     packages:
     - gfortran
 
-# download and unpack
 before_install:
-  - wget http://www.netlib.org/lapack/lapack-3.6.0.tgz
-  - tar xf lapack-3.6.0.tgz
-  - cd lapack-3.6.0
+- wget http://www.netlib.org/lapack/lapack-3.6.0.tgz
+- tar xf lapack-3.6.0.tgz
+- cd lapack-3.6.0
 
-# create the make.inc from example, modify Makefile
 install:
-  - mv make.inc.example make.inc
-  - sed -i -e 's/lib:\ lapacklib\ tmglib /\#lib:\ lapacklib\ tmglib/g' Makefile 
-  - sed -i -e 's/#lib:\ blaslib\ variants/\lib:\ blaslib\ variants/g' Makefile 
+- mv make.inc.example make.inc
+- sed -i -e 's/lib:\ lapacklib\ tmglib /\#lib:\ lapacklib\ tmglib/g' Makefile
+- sed -i -e 's/#lib:\ blaslib\ variants/\lib:\ blaslib\ variants/g' Makefile
 
-# build
 script:
-  - make lib
+- make lib
 
+deploy:
+  provider: releases
+  api_key:
+    secure: HIl8PSx24Ed15Np1HlwdgyiIjErdG9c4KNerThcVJGI65WdS+1qDikkDtkjl5N7MCzbJI8vbrtLHd/BQYO8bz5txKylIj1GIgZ83pJPudqnRE/HZrZvhmsVfhUELX/fvlX+pTc+HeidXlly+jbbwXrJIw/z/cS3GcVRMVIvhN8mRm3Tvw80+K4ZnyDm1dp0EDnpabbkJJLlIx/9YN6UAQ3pJ/isJ6L/58cwX2ZHG+PPWOacGm4DtpjXQ+8SuIf2HlkxmURuzE03UWmL9Zob5mMh7AMOTwBJa+o4AA2h2HxUJ1FJNf11evMM7wSvrrV80azvelq2ofdJUmPmHbrGn8MXLL0qjS+4Iwp/jqdfYws1295dHKp6ZeOaUud32CFEe7J5eb3ul5PMFWUYsrdJO1eP57EMpXoYq2QhLVPeevoIW6NmZBIRztpGQR4KVCnIz9s3EKnFeYTOrZGyM4V7XAynKbsUvWIgD1DdfG2xSEEZzh/vdKClWAmDnMlhlqp/pcqOI74pgJ3vGOy36MuUlivCeoYW0hGi7teK6jImr+yfW+TvjZZiy11hE6P+Bw80wbvoP771ypFrBgnXkrme9Mki48WuFM8WM/GT5/TN0e4/MoNBqPD3+5rX66HKwScpJxxgAo0sTY8yjSZcByfCDxGQXkhq7zxRtal+lbqsTicI=
+  file: 
+    - liblapack.a 
+    - librefblas.a
+  on:
+    repo: jtilly/build-lapack
